@@ -18,6 +18,7 @@
   import { OnChainChanABI } from "../lib/OnChainChan.sol";
   import { getAssetIdFromParams } from "../lib/caip";
   import RenderAsset from "../components/RenderAsset.svelte";
+  import { slide } from "svelte/transition";
 
   const assetId = getAssetIdFromParams(params);
 
@@ -107,7 +108,9 @@
         </div>
       {/if}
       {#each allEvents as event (event.transactionHash + event.logIndex.toString())}
-        <Post {event} />
+        <div in:slide>
+          <Post {event} />
+        </div>
       {/each}
     </div>
   </div>

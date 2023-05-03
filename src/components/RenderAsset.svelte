@@ -32,7 +32,7 @@
     <img src={imageUri} alt={tokenName} />
   {:else if mimeType?.startsWith("video/") && imageUri}
     <!-- svelte-ignore a11y-media-has-caption -->
-    <video controls autoplay muted src={convertURIToHTTPS(imageUri)} />
+    <video controls autoplay loop muted src={convertURIToHTTPS(imageUri)} />
   {:else}
     <div class="h-80">
       <ImagePlaceholder />
