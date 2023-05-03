@@ -5,14 +5,23 @@ import {
 } from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/html";
 import { configureChains, createClient } from "@wagmi/core";
-import { mainnet, optimism, goerli, type Chain } from "@wagmi/core/chains";
+import {
+  mainnet,
+  optimism,
+  goerli,
+  type Chain,
+  polygon,
+  arbitrum,
+} from "@wagmi/chains";
 import { WALLET_CONNECT_PROJECT_ID } from "./constants";
+
+export const RENDERABLE_CHAINS = [mainnet, optimism, goerli, polygon, arbitrum];
 
 export const CHAN_CHAIN: Chain =
   process.env.NODE_ENV === "development" ? goerli : optimism;
 
 // wagmi needs mainnet for ens resolution & lookups
-const WAGMI_CHAINS: Chain[] = [CHAN_CHAIN, mainnet];
+const WAGMI_CHAINS: Chain[] = RENDERABLE_CHAINS;
 
 // web3modal should only know about deployment chain
 const CHAN_CHAINS: Chain[] = [CHAN_CHAIN];

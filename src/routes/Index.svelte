@@ -5,6 +5,11 @@
 <main class="max-w-4xl mx-auto flex flex-col gap-8">
   <h1 class="text-3xl">on chain chan for any nft</h1>
 
+  <p>
+    uses ZDK for best-effort NFT rendering, but you can comment on anything,
+    even if it isn't rendering
+  </p>
+
   <ul class="list-disc list-inside">
     <li>
       <code
@@ -24,7 +29,10 @@
       >
     </li>
     <li>
-      <a>a goerli nft</a>
+      example: <a
+        href="/eip155:5/erc721:0xf5de760f2e916647fd766b4ad9e85ff943ce3a2b/1"
+        use:link>a goerli nft</a
+      >
     </li>
   </ul>
 </main>
