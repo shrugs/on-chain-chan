@@ -13,6 +13,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.0.3",
     "@tsconfig/svelte": "^4.0.1",
+    "@types/lodash-es": "^4.17.7",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
     "postcss-load-config": "^4.0.1",
@@ -28,8 +29,11 @@
     "@wagmi/core": "^0.10.10",
     "@web3modal/ethereum": "^2.3.7",
     "@web3modal/html": "^2.3.7",
+    "@zoralabs/nft-hooks": "^1.2.1",
+    "@zoralabs/zorb": "^0.1.0",
     "caip": "^1.1.0",
     "ethers": "^5.7.2",
+    "lodash-es": "^4.17.21",
     "svelte-spa-router": "^3.3.0"
   }
 }

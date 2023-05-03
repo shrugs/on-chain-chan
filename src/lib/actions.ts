@@ -6,3 +6,10 @@ export function external(node: HTMLAnchorElement) {
     destroy() {},
   };
 }
+
+export function profile(node: HTMLAnchorElement, address: string) {
+  node.href = `https://rainbow.me/${address}`;
+  return {
+    destroy() {},
+  };
+}
