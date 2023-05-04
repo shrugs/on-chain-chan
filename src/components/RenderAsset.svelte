@@ -54,7 +54,7 @@
     });
   });
 
-  $: console.log($nft, $infos);
+  $: process.env.NODE_ENV === "development" && console.log($nft, $infos);
 
   $: tokenName = $nft?.metadata.name;
   $: contractName = $nft?.nft.contract.name ?? $infos[0];
@@ -78,7 +78,7 @@
   {/if}
 </div>
 {#if assetId.assetName.namespace !== "erc721" && $nftState.isSettled && !tokenDisplayName}
-  unable to fetch name
+  unable to fetch name (is not erc721)
 {:else if tokenDisplayName}
   <h1 class="text-md font-bold">{tokenDisplayName}</h1>
 {:else}

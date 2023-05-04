@@ -13,12 +13,9 @@ import {
   polygon,
   arbitrum,
 } from "@wagmi/chains";
-import { WALLET_CONNECT_PROJECT_ID } from "./constants";
+import { CHAN_CHAIN, WALLET_CONNECT_PROJECT_ID } from "./constants";
 
 export const RENDERABLE_CHAINS = [mainnet, optimism, goerli, polygon, arbitrum];
-
-export const CHAN_CHAIN: Chain =
-  process.env.NODE_ENV === "development" ? goerli : optimism;
 
 // wagmi needs mainnet for ens resolution & lookups
 const WAGMI_CHAINS: Chain[] = RENDERABLE_CHAINS;

@@ -14,7 +14,7 @@
   import { ethers } from "ethers";
   import { getChan } from "../lib/chan";
   import { asyncReadable, asyncDerived } from "@square/svelte-store";
-  import { CHAN_ADDRESS, CHAN_CHAIN_ID } from "../lib/constants";
+  import { CHAN_ADDRESS, CHAN_CHAIN } from "../lib/constants";
   import { OnChainChanABI } from "../lib/OnChainChan.sol";
   import { getAssetIdFromParams } from "../lib/caip";
   import RenderAsset from "../components/RenderAsset.svelte";
@@ -23,7 +23,7 @@
   const assetId = getAssetIdFromParams(params);
 
   const occ = getChan();
-  const provider = getProvider({ chainId: CHAN_CHAIN_ID });
+  const provider = getProvider({ chainId: CHAN_CHAIN.id });
   const blockNumber = asyncReadable(null, () => provider.getBlockNumber());
 
   $: topic = ethers.utils.keccak256(
@@ -61,14 +61,14 @@
     const data = new FormData(event.target as HTMLFormElement);
     const content = data.get("content") as string;
 
-    if (getNetwork().chain.id !== CHAN_CHAIN_ID) {
-      await switchNetwork({ chainId: CHAN_CHAIN_ID });
+    if (getNetwork().chain.id !== CHAN_CHAIN.id) {
+      await switchNetwork({ chainId: CHAN_CHAIN.id });
     }
 
     const config = await prepareWriteContract({
-      address: CHAN_ADDRESS[CHAN_CHAIN_ID],
+      address: CHAN_ADDRESS,
       abi: OnChainChanABI,
-      chainId: CHAN_CHAIN_ID,
+      chainId: CHAN_CHAIN.id,
       functionName: "post",
       args: [topic as `0x${string}`, content],
     });

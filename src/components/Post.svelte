@@ -4,10 +4,9 @@
   import { external } from "../lib/actions";
   import type { ethers } from "ethers";
   import { asyncDerived, asyncReadable } from "@square/svelte-store";
-  import { CHAN_CHAIN_ID } from "../lib/constants";
   import { formatTimeAgo } from "../lib/time";
   import AddressOrEns from "./AddressOrENS.svelte";
-  import { CHAN_CHAIN } from "../lib/ethereum";
+  import { CHAN_CHAIN } from "../lib/constants";
 
   export let event: ethers.Event;
 
@@ -19,7 +18,7 @@
   $: avatarUrl = fetchEnsAvatar({ address: from as Address, chainId: 1 });
 
   $: block = asyncReadable(null, () =>
-    getProvider({ chainId: CHAN_CHAIN_ID }).getBlock(event.blockHash)
+    getProvider({ chainId: CHAN_CHAIN.id }).getBlock(event.blockHash)
   );
 
   $: timeAgo = asyncDerived([block], async ([$block]) =>

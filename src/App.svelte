@@ -13,8 +13,7 @@
   import InvalidPage from "./routes/InvalidPage.svelte";
   import { getAssetIdFromParams } from "./lib/caip";
   import { external } from "./lib/actions";
-  import { CHAN_CHAIN } from "./lib/ethereum";
-  import { CHAN_ADDRESS, CHAN_CHAIN_ID } from "./lib/constants";
+  import { CHAN_ADDRESS, CHAN_CHAIN } from "./lib/constants";
 
   const routes = {
     "/": Index,
@@ -63,9 +62,7 @@
       <li>
         posts <a
           class="underline"
-          href="{CHAN_CHAIN.blockExplorers.default}/address/{CHAN_ADDRESS[
-            CHAN_CHAIN_ID
-          ]}"
+          href="{CHAN_CHAIN.blockExplorers.default}/address/{CHAN_ADDRESS}"
           use:external>on {CHAN_CHAIN.name.toLowerCase()}</a
         >
       </li>
