@@ -1,5 +1,5 @@
 <script lang="ts">
-  let error: boolean = false;
+  export let error: boolean = false;
 </script>
 
 <div class="flex items-center justify-center w-full h-full bg-gray-300">

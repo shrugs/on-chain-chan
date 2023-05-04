@@ -54,7 +54,7 @@
     });
   });
 
-  $: process.env.NODE_ENV === "development" && console.log($nft, $infos);
+  // $: process.env.NODE_ENV === "development" && console.log($nft, $infos);
 
   $: tokenName = $nft?.metadata.name;
   $: contractName = $nft?.nft.contract.name ?? $infos[0];

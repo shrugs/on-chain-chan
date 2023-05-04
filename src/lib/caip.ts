@@ -1,7 +1,10 @@
-import { AssetId } from "caip";
+import { AssetId, AssetType } from "caip";
 
-export function getAssetIdFromLocation(location: string) {
-  return new AssetId(location.slice(1));
+export function getAssetTypeFromParams(params: Record<string, string>) {
+  return new AssetType({
+    chainId: params.chainId,
+    assetName: params.assetNamespace,
+  });
 }
 
 export function getAssetIdFromParams(params: Record<string, string>) {

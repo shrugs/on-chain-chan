@@ -3,23 +3,23 @@
 
   import Post from "../components/Post.svelte";
   import { ethers } from "ethers";
-  import { getAssetIdFromParams } from "../lib/caip";
-  import RenderAsset from "../components/RenderAsset.svelte";
+  import { getAssetTypeFromParams } from "../lib/caip";
   import { slide } from "svelte/transition";
   import { createEventsStore } from "../stores/createEventsStore";
   import PostForm from "../components/PostForm.svelte";
   import ChanPageLayout from "../components/ChanPageLayout.svelte";
+  import RenderAssetType from "../components/RenderAssetType.svelte";
 
-  const assetId = getAssetIdFromParams(params);
+  const assetType = getAssetTypeFromParams(params);
   const topic = ethers.utils.keccak256(
-    ethers.utils.toUtf8Bytes(assetId.toString())
+    ethers.utils.toUtf8Bytes(assetType.toString())
   );
   const { store: events, state: eventsState } = createEventsStore(topic);
 </script>
 
 <ChanPageLayout>
   <svelte:fragment slot="sidebar">
-    <RenderAsset {assetId} />
+    <RenderAssetType {assetType} />
   </svelte:fragment>
 
   <PostForm {topic} />

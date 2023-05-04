@@ -10,8 +10,8 @@ const DIVISIONS: { amount: number; name: Intl.RelativeTimeFormatUnit }[] = [
   { amount: Number.POSITIVE_INFINITY, name: "years" },
 ];
 
-export function formatTimeAgo(timestamp: number) {
-  let duration = (timestamp - new Date().getTime()) / 1000;
+export function formatTimeAgo(timestamp: number, now: number) {
+  let duration = (timestamp - now) / 1000;
 
   for (let i = 0; i < DIVISIONS.length; i++) {
     const division = DIVISIONS[i];

@@ -11,12 +11,26 @@
   import AssetIdPage from "./routes/AssetIdPage.svelte";
   import NotFound from "./routes/NotFound.svelte";
   import InvalidPage from "./routes/InvalidPage.svelte";
-  import { getAssetIdFromParams } from "./lib/caip";
+  import { getAssetIdFromParams, getAssetTypeFromParams } from "./lib/caip";
   import { external } from "./lib/actions";
   import { CHAN_ADDRESS, CHAN_CHAIN } from "./lib/constants";
+  import AssetTypePage from "./routes/AssetTypePage.svelte";
 
   const routes = {
     "/": Index,
+    "/:chainId/:assetNamespace": wrap({
+      component: AssetTypePage,
+      conditions: [
+        (detail) => {
+          try {
+            getAssetTypeFromParams(detail.params);
+            return true;
+          } catch {
+            return false;
+          }
+        },
+      ],
+    }),
     "/:chainId/:assetNamespace/:tokenId": wrap({
       component: AssetIdPage,
       conditions: [

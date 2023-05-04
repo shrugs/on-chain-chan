@@ -5,8 +5,9 @@
   import type { ethers } from "ethers";
   import { asyncDerived, asyncReadable } from "@square/svelte-store";
   import { formatTimeAgo } from "../lib/time";
-  import AddressOrEns from "./AddressOrENS.svelte";
+  import AddressOrEns from "./AddressOrEns.svelte";
   import { CHAN_CHAIN } from "../lib/constants";
+  import { createIntervalStore } from "../stores/createIntervalStore";
 
   export let event: ethers.Event;
 
@@ -21,8 +22,10 @@
     getProvider({ chainId: CHAN_CHAIN.id }).getBlock(event.blockHash)
   );
 
-  $: timeAgo = asyncDerived([block], async ([$block]) =>
-    formatTimeAgo($block.timestamp * 1000)
+  const now = createIntervalStore(10_000);
+
+  $: timeAgo = asyncDerived([block, now], async ([$block, $now]) =>
+    formatTimeAgo($block.timestamp * 1000, $now.getTime())
   );
 </script>
 
